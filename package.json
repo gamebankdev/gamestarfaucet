@@ -1,0 +1,36 @@
+{
+  "name": "faucet",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "@zeit/next-css": "^0.2.0",
+    "antd": "^3.6.2",
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "gamebank": "^0.1.4",
+    "mysql": "^2.16.0",
+    "mysql2": "^1.5.3",
+    "next": "^6.0.3",
+    "node-mysql": "^0.4.2",
+    "nodemailer": "^4.6.7",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.0",
+    "redux-devtools-extension": "^2.13.2",
+    "redux-thunk": "^2.3.0",
+    "sequelize": "^4.37.10"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node server.js",
+    "build": "next build",
+    "start": "NODE_ENV=production node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
