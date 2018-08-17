@@ -106,7 +106,7 @@ const config={
             chunkFilename: NODE_ENV=='development'?"[id].css":'[id][hash].css',
         }),
         new HtmlWebpackPlugin({
-            title:"gamebank注册",
+            title:"gamebank register",
             filename:"index.html",
             hash:true,
             template:path.resolve(__dirname,"src/index.html")

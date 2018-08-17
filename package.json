@@ -1,7 +1,7 @@
 {
   "name": "gamestarfaucet",
   "version": "1.0.0",
-  "description": "webpack4 and react",
+  "description": "gamebank",
   "main": "index.js",
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack-dev-server --open",
