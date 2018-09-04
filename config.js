@@ -1,3 +1,3 @@
 
-export var  loginUrl = "http://192.168.1.101:8000"
-export var  serverAPI = "http://192.168.1.101:5000"
+export var  loginUrl = "http://www.gbank.pro/"
+export var  serverAPI = "http://www.gbank.pro:5000"

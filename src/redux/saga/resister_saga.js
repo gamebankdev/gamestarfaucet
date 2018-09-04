@@ -1,4 +1,6 @@
 import { call,put, takeLatest } from 'redux-saga/effects'
+import gamebank from '../../util/gamebank'
+import {message} from 'antd'
 import { 
   POST_REGISTER_REQUEST,
   POST_REGISTER_FAILED,
@@ -16,9 +18,7 @@ function * fetchReigster(action) {
       type:POST_REGISTER_SUCCESS,
       payload:data
     })
-    yield call(exportRaw,'密码组.txt',data)
   }catch(err){
-
     yield put({
       type:POST_REGISTER_FAILED,
       payload:err
@@ -27,19 +27,26 @@ function * fetchReigster(action) {
 }
 function * checkUserName(action){
   try{
+    const isValidUsername = gamebank.utils.validateAccountName(action.payload[0][0]);
+    if(isValidUsername){
+     return yield put({
+        type:POST_CHECKUSERNAME_SUCCESS,
+        payload:isValidUsername
+      })
+    }
     const data= yield call(postData,'/api/getAccounts',action.payload)
     yield put({
       type:POST_CHECKUSERNAME_SUCCESS,
       payload:data
     })
   }catch(err){
+    message.error(err.message)
     yield put({
       type:POST_CHECKUSERNAME_FAILED,
       payload:err.message
     })
   }
 }
-
 function* mySaga() {
   yield takeLatest(POST_REGISTER_REQUEST, fetchReigster);
   yield takeLatest(POST_CHECKUSERNAME_REQUEST, checkUserName);

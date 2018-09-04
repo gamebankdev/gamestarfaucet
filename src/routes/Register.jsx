@@ -20,11 +20,11 @@ class RegisterComponent extends React.Component{
                 <div className={Styles.headers}>
                     <div className={Styles.Header_Content}>
                         <div className={Styles.logo}>
-                         <Link to="/"> GameStar</Link>
+                         <a href="http://www.gbank.pro "> GameStar</a>
                         </div>
                         <div className={Styles.loginButton}>
                             <Icon type="user" />
-                            <Link to={loginUrl}>登陆</Link>
+                            <a href={loginUrl}>登陆</a>
                             <span className={Styles.line}></span>
                             <Icon type="edit" />
                             <span>注册</span>

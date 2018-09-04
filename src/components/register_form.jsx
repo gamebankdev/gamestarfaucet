@@ -6,7 +6,7 @@ const FormItem = Form.Item;
 
 class Login extends React.Component {
     state={
-      validateUserNameStatus:'warning'
+      validateUserNameStatus:'warning',
     }
     handleSubmit = (e) => {
       e.preventDefault();
@@ -28,18 +28,18 @@ class Login extends React.Component {
         if(value){
           this.props.dispatch(post_checkUsername_request([[value]]))
           callback()
+        }else{
+          callback('请输入用户名!')
         }
     }
     render() {
-    
       const { getFieldDecorator} = this.props.form;
-      const {isFetching,isRepeatUserName,validateUserNameStatus} = this.props
+      const {isFetching,validateUserNameResult,validateUserNameStatus} = this.props
       const formItemLayout = {
         labelCol: {
           sm: { span: 8 },
         },
         wrapperCol: {
-
           sm: { span: 8 },
         },
       };
@@ -50,7 +50,7 @@ class Login extends React.Component {
             label="输入用户名"
             hasFeedback
             validateStatus={validateUserNameStatus}
-            help={isRepeatUserName?"用户名重复":validateUserNameStatus=='success'?null:"用户名为小写字母和数字的组合,且不能以数字开头,长度为3--16位"}
+            help={validateUserNameResult}
           >
             {getFieldDecorator('userName', {
               validateTrigger:'onBlur',

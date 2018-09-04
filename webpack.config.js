@@ -138,7 +138,6 @@ if(NODE_ENV=='production'){
   )
 }
 if(NODE_ENV=='development'){
-    console.log("1111")
     config.devServer={
         host: '192.168.1.101',
         contentBase: path.resolve(__dirname, "dist"), //静态文件根目录

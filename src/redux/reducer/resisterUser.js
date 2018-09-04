@@ -11,8 +11,9 @@ const initialState ={
     isFetching: false,
     postingError:undefined,
     users:[],
-    isRepeatUserName:false,
+    validateUserNameResult:"用户名为小写字母和数字的组合,且不能以数字开头,长度为3--16位!",
     validateUserNameStatus:'warning',
+
     validateUserNameError:undefined,
 }
 const resisterUser= (state=initialState,action)=>{
@@ -23,17 +24,23 @@ const resisterUser= (state=initialState,action)=>{
                 validateUserNameStatus:'validating'
             }
         case POST_CHECKUSERNAME_SUCCESS:
-          let isRepeatUserName = false, validateUserNameStatus =  'warning'
-          if(action.payload.length>0){
-            isRepeatUserName = true,
-            validateUserNameStatus = 'error'
-          }else{
-            isRepeatUserName = false,
-            validateUserNameStatus = 'success'
-          }
+            let validateUserNameResult,validateUserNameStatus;
+            if(Array.isArray(action.payload)){
+                if(action.payload.length>0){
+                    validateUserNameResult="用户名重复"
+                    validateUserNameStatus = 'error'
+                  }else{
+                    validateUserNameResult=""
+                    validateUserNameStatus = 'success'
+                  }
+            }else{
+                validateUserNameResult=action.payload
+                validateUserNameStatus = 'error'
+            }
+
           return {
               ...state,
-              isRepeatUserName,
+              validateUserNameResult,
               validateUserNameStatus
             }
         case POST_CHECKUSERNAME_FAILED:
